@@ -1,4 +1,2 @@
-bin/*
-include/*
-lib/*
-.Python
+testpy/*
+.DS_Store
