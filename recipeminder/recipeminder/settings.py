@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'recipes'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,6 +64,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Templates
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/

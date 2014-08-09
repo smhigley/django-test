@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Recipes
+{% endblock %}
+
+{% block maincontent %}
+<div class="recipe-container">
+  {% if recipelist %}
+  <ul class="recipe-list">
+    {% for recipe in recipelist %}
+    <li>
+      <h3>{{ recipe.name }}</h3>
+      <span>{{ recipe.description }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="warning">Looks like you don't have any recipes yet! Try adding a new one.</p>
+  {% endif %}
+</div>
+{% endblock %}
