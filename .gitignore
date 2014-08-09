@@ -3,3 +3,5 @@ venv/*
 */mysecret.py
 *.pyc
 *.sqlite3
+node_modules
+.sass-cache

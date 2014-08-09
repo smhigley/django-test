@@ -68,6 +68,12 @@ DATABASES = {
 # Templates
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+# Assets
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    BASE_DIR + '/static/', # <= don't forget a comma here
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 

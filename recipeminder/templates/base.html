@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if IE 9]><html class="no-js lt-ie10" lang="en"><![endif]-->
@@ -7,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe Minder | {% block title %}{% endblock %}</title>
 
-	<link rel="stylesheet" href="/css/app.css">
+	<link rel="stylesheet" href="{% static 'css/app.css' %}">
 
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
@@ -18,19 +19,23 @@
 	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+	<link href='http://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400italic,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
 	<div class="container" role="document">
-		<header class="page-header" role="banner">
-			<nav class="main-menu" role="navigation">
+		<header class="page-header row" role="banner">
+			<nav class="main-menu menu" role="navigation">
 				<ul>
-					<li><a href="{% url 'recipelist' %}">Home</a></li>
+					<li><a href="{% url 'recipelist' %}" class="home">Home</a></li>
+					<li><a href="{% url 'recipelist' %}" class="food">Food Recipes</a></li>
+					<li><a href="{% url 'recipelist' %}" class="drink">Drink Recipes</a></li>
 				</ul>
 			</nav>
 		</header><!-- /#page-header -->
 
-		<div class="main-content">
+		<div class="main-content row">
 			{% block maincontent %}
 			{% endblock %}
 		</div>

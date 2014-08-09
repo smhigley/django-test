@@ -1,0 +1,95 @@
+@import "mixins";
+@import "grid";
+
+// em calculation
+$em-base: 16px;
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-em($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+@function em-calc($values, $base-value: $em-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+// grid variables
+$row-width: em-calc(1000);
+$total-columns: 12;
+$column-gutter: em-calc(30);
+
+// media queries
+$xlarge-bound: 1130;
+$large-bound: 960;
+$medium-bound: 830;
+$small-bound: 740;
+$xsmall-bound: 440;
+
+$x-small-only: "only screen and (max-width: #{em-calc($xsmall-bound)})";
+$small-only: "only screen and (max-width: #{em-calc($small-bound)})";
+
+$medium-only: "only screen and (min-width: #{em-calc($small-bound + 1)}) and (max-width: #{em-calc($medium-bound)})";
+$medium-up: "only screen and (min-width: #{em-calc($small-bound + 1)})";
+$medium-down: "only screen and (max-width: #{em-calc($medium-bound)})";
+
+$large-only: "only screen and (min-width: #{em-calc($medium-bound + 1)}) and (max-width: #{em-calc($large-bound)})";
+$large-up: "only screen and (min-width: #{em-calc($medium-bound + 1)})";
+$large-down: "only screen and (max-width: #{em-calc($large-bound)})";
+
+$xlarge-only: "only screen and (min-width: #{em-calc($large-bound + 1)}) and (max-width: #{em-calc($xlarge-bound)})";
+$xlarge-up: "only screen and (min-width: #{em-calc($xlarge-bound)})";
+$xlarge-down: "only screen and (max-width: #{em-calc($xlarge-bound)})";
+
+// colors
+$dark: #272727;
+$red: #bf3f24;
+$dark-red: #a3341d;
+$green: #8caf2f;
+$yellow: #f6d926;
+$navy: #2f3b53;
+$teal: #39b5b5;
+$grey: #999491;
+$med-grey: #cbcbc8;
+$med-warm-grey: #d8d4cc;
+$light-grey: #e3e3d9;
+$light: #f4f4f4;
+
+// icons
+$icon-drink: "\f0f4";
+$icon-food: "\f0f5";
+$icon-alcohol: "\f000";
+$icon-edit: "\f0ad";
+$icon-home: "\f015";
+$icon-vegetarian: "\f06c";
+$icon-photo: "\f083";
+$icon-check: "\f00c";
+$icon-close: "\f00d";
+
+// fonts
+//font face declarations
+@font-face {
+  font-family: 'icomoon';
+  src:url('fonts/icomoon.eot?6dg410');
+  src:url('fonts/icomoon.eot?#iefix6dg410') format('embedded-opentype'),
+    url('fonts/icomoon.woff?6dg410') format('woff'),
+    url('fonts/icomoon.ttf?6dg410') format('truetype'),
+    url('fonts/icomoon.svg?6dg410#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+$icon-font: "icomoon";
+$body-font: 'Open Sans', sans-serif;
+$heading-font: 'Indie Flower', cursive;

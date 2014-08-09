@@ -1,0 +1,128 @@
+@import "normalize";
+@import "base";
+
+.hide {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.tablet {
+  display: none;
+  @media #{$medium-down} { display: block; }
+}
+.mobile {
+  display: none;
+  @media #{$small-only} { display: block; }
+}
+
+.desktop {
+  @media #{$medium-down} { display: none; }
+}
+
+html, body {
+  min-height: 100%;
+  font-family: $body-font;
+  font-size: 16px;
+  color: $dark;
+}
+
+body {
+  background: url(../images/background.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.container {
+  padding: em-calc(40) 0 em-calc(50);
+}
+
+.main-content {
+  padding: em-calc(30) em-calc(40);
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  @include border-radius(4px);
+}
+
+.row {
+  @include grid-row();
+}
+
+.content-row {
+  @include grid-row($no-columns: true);
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// header & main menu
+[role="banner"] {
+  //
+}
+
+.main-menu {
+  float: right;
+  padding: 0 0 em-calc(12);
+  ul {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin-left: 8px;
+  }
+  a {
+    display: block;
+    padding: 10px 0;
+    width: 56px;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    color: $dark;
+    background-color: rgba(255, 255, 255, 0.8);
+    @include border-radius(4px);
+    &:before {
+      @extend .icon;
+      font-size: 36px;
+    }
+    &:hover {
+      color: #fff;
+      background-color: $red;
+    }
+    &.home:before { content: $icon-home; }
+    &.food:before { content: $icon-food; }
+    &.drink:before { content: $icon-drink; }
+  }
+}
+
+// typography
+// icon class
+.icon {
+  font-family: $icon-font;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3 {
+  font-family: $heading-font;
+  font-weight: 400;
+  margin: 0 0 0.5em;
+}
+.page-title {
+  font-size: 60px;
+  margin-bottom: em-calc(10, 60);
+}
+
+a {
+  text-decoration: none;
+  @include transition(color 0.3s ease, background 0.3s ease);
+}

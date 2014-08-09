@@ -6,11 +6,12 @@ All Recipes
 
 {% block maincontent %}
 <div class="recipe-container">
+  <h1 class="page-title">All Recipes</h1>
   {% if recipelist %}
   <ul class="recipe-list">
     {% for recipe in recipelist %}
     <li>
-      <h3>{{ recipe.name }}</h3>
+      <h3><a href="{{ recipe.id }}">{{ recipe.name }}</a></h3>
       <span>{{ recipe.description }}</span>
     </li>
     {% endfor %}
@@ -18,5 +19,6 @@ All Recipes
   {% else %}
   <p class="warning">Looks like you don't have any recipes yet! Try adding a new one.</p>
   {% endif %}
+  <a href="edit/">Create a new recipe</a>
 </div>
 {% endblock %}
