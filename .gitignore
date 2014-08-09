@@ -1,2 +1,5 @@
-testpy/*
+venv/*
 .DS_Store
+*/mysecret.py
+*.pyc
+*.sqlite3
